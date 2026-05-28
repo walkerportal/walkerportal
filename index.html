@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WALKER</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+color:white;
+}
+
+/* ARKAPLAN */
+
+.bg{
+position:absolute;
+width:100%;
+height:100%;
+background:
+linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.65)),
+url('https://images6.alphacoders.com/134/1340711.png');
+background-size:cover;
+background-position:center;
+animation:bgZoom 12s infinite alternate ease-in-out;
+z-index:0;
+}
+
+@keyframes bgZoom{
+0%{
+transform:scale(1);
+}
+100%{
+transform:scale(1.05);
+}
+}
+
+/* YILDIZ */
+
+.stars{
+position:absolute;
+width:100%;
+height:100%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+opacity:0.35;
+animation:starsMove 120s linear infinite;
+z-index:1;
+}
+
+@keyframes starsMove{
+from{
+background-position:0 0;
+}
+to{
+background-position:1500px 1500px;
+}
+}
+
+/* MOR HALKALAR */
+
+.circle1{
+position:absolute;
+width:320px;
+height:320px;
+border-radius:50%;
+border:2px solid rgba(170,0,255,0.7);
+left:-120px;
+bottom:-120px;
+box-shadow:
+0 0 60px rgba(170,0,255,0.5),
+0 0 120px rgba(170,0,255,0.2);
+z-index:1;
+}
+
+.circle2{
+position:absolute;
+width:260px;
+height:260px;
+border-radius:50%;
+border:2px solid rgba(170,0,255,0.7);
+right:-100px;
+top:-100px;
+box-shadow:
+0 0 60px rgba(170,0,255,0.5),
+0 0 120px rgba(170,0,255,0.2);
+z-index:1;
+}
+
+/* DOKUNMA EFEKTİ */
+
+.touch{
+position:absolute;
+width:240px;
+height:240px;
+border-radius:50%;
+background:radial-gradient(circle,
+rgba(170,0,255,0.45),
+transparent 70%);
+pointer-events:none;
+transform:translate(-50%,-50%);
+mix-blend-mode:screen;
+z-index:2;
+}
+
+/* ANA */
+
+.container{
+position:relative;
+z-index:3;
+text-align:center;
+animation:intro 2s ease;
+}
+
+@keyframes intro{
+0%{
+opacity:0;
+transform:scale(0.75);
+filter:blur(15px);
+}
+100%{
+opacity:1;
+transform:scale(1);
+filter:blur(0);
+}
+}
+
+/* ÜST YAZI */
+
+.small{
+font-size:18px;
+letter-spacing:8px;
+color:#dcb7ff;
+margin-bottom:18px;
+animation:fadeUp 2s ease;
+}
+
+/* LOGO */
+
+.logo{
+font-size:110px;
+font-weight:900;
+color:white;
+text-shadow:
+0 0 10px #bc13fe,
+0 0 25px #bc13fe,
+0 0 50px #7a04eb,
+0 0 100px #7a04eb;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+0%{
+text-shadow:
+0 0 10px #bc13fe,
+0 0 25px #bc13fe;
+}
+100%{
+text-shadow:
+0 0 20px #bc13fe,
+0 0 45px #7a04eb,
+0 0 100px #7a04eb;
+}
+}
+
+.sub{
+margin-top:10px;
+font-size:30px;
+color:#cb8dff;
+animation:fadeUp 2.2s ease;
+}
+
+.text{
+margin-top:22px;
+font-size:22px;
+color:#d8d8d8;
+animation:fadeUp 2.4s ease;
+}
+
+@keyframes fadeUp{
+0%{
+opacity:0;
+transform:translateY(35px);
+}
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* GİRİŞ */
+
+.enter-btn{
+display:inline-flex;
+align-items:center;
+gap:12px;
+margin-top:40px;
+padding:18px 60px;
+border:2px solid #bc13fe;
+border-radius:22px;
+font-size:28px;
+color:white;
+text-decoration:none;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+box-shadow:
+0 0 25px rgba(188,19,254,0.5),
+0 0 60px rgba(188,19,254,0.2);
+transition:0.35s;
+}
+
+.enter-btn:hover{
+transform:scale(1.06);
+background:rgba(188,19,254,0.18);
+}
+
+/* SOSYAL */
+
+.social-box{
+position:absolute;
+bottom:25px;
+width:250px;
+padding:22px;
+border-radius:28px;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(18px);
+border:1px solid rgba(188,19,254,0.3);
+box-shadow:
+0 0 30px rgba(188,19,254,0.15);
+z-index:4;
+}
+
+.left-box{
+left:25px;
+}
+
+.right-box{
+right:25px;
+}
+
+.social-title{
+font-size:24px;
+margin-bottom:18px;
+color:#e3b8ff;
+}
+
+.social-item{
+display:flex;
+align-items:center;
+gap:12px;
+margin:16px 0;
+font-size:20px;
+text-decoration:none;
+color:white;
+}
+
+.social-item img{
+width:35px;
+height:35px;
+object-fit:contain;
+}
+
+/* MOBİL */
+
+@media(max-width:700px){
+
+.logo{
+font-size:60px;
+}
+
+.small{
+font-size:13px;
+letter-spacing:5px;
+}
+
+.sub{
+font-size:20px;
+}
+
+.text{
+font-size:17px;
+}
+
+.enter-btn{
+font-size:22px;
+padding:15px 40px;
+}
+
+.social-box{
+width:170px;
+padding:15px;
+bottom:15px;
+}
+
+.social-title{
+font-size:18px;
+}
+
+.social-item{
+font-size:13px;
+}
+
+.social-item img{
+width:25px;
+height:25px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="stars"></div>
+
+<div class="circle1"></div>
+<div class="circle2"></div>
+
+<div class="touch" id="touch"></div>
+
+<div class="container">
+
+<div class="small">WELCOME TO THE SYSTEM</div>
+
+<div class="logo">WALKER</div>
+
+<div class="sub">WALKER YÖRÜNGESİ</div>
+
+<div class="text">Sisteme giriş yapıldı.</div>
+
+<a href="#" class="enter-btn">
+➜ GİRİŞ
+</a>
+
+</div>
+
+<!-- SOL ALT -->
+
+<div class="social-box left-box">
+
+<div class="social-title">WALKER</div>
+
+<a class="social-item" href="https://instagram.com/xx00_2345" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+<span>xx00_2345</span>
+</a>
+
+<a class="social-item" href="https://tiktok.com/@_ww_032" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png">
+<span>_ww_032</span>
+</a>
+
+</div>
+
+<!-- SAĞ ALT -->
+
+<div class="social-box right-box">
+
+<div class="social-title">TROXY</div>
+
+<a class="social-item" href="https://instagram.com/txy766" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+<span>txy766</span>
+</a>
+
+<a class="social-item" href="https://tiktok.com/@txy776" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png">
+<span>txy776</span>
+</a>
+
+</div>
+
+<script>
+
+const touch=document.getElementById("touch");
+
+document.addEventListener("mousemove",(e)=>{
+touch.style.left=e.clientX+"px";
+touch.style.top=e.clientY+"px";
+});
+
+document.addEventListener("touchmove",(e)=>{
+touch.style.left=e.touches[0].clientX+"px";
+touch.style.top=e.touches[0].clientY+"px";
+});
+
+</script>
+
+</body>
+</html>
